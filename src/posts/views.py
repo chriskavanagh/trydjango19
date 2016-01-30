@@ -9,6 +9,12 @@ from .forms import PostForm
 # Create your views here.
 def post_create(request):
     form = PostForm(request.POST or None)
+    if form.is_valid():
+        f = form.save(commit=False)
+        f.save()
+        return redirect(reverse('list'))
+    cxt = {'form': form}
+    return render(request, 'post_form.html', cxt)
     
     
 def post_detail(request, pk=None):

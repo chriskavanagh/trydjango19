@@ -12,7 +12,7 @@ urlpatterns = [
     # detail view
     url(r'^(?P<pk>\d+)/$', views.post_detail, name='detail'),
     # update view
-    url(r'^(?P<pk>\d+)/update/$', views.post_create, name='update'),
+    url(r'^(?P<pk>\d+)/update/$', views.post_update, name='update'),
     # delete view
     url(r'^(?P<pk>\d+)/delete/$', views.post_create, name='delete'),
     

@@ -11,9 +11,11 @@
             <b>updated:</b> {{ object.updated }}<br/>
             pk={{ object.pk }}<br/><br/>
 
+        Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a><br/><br/>
+
         {% empty %}
         <p>You Have No Posts</p>
-        
+
         {% endfor %}
         
     </body>
