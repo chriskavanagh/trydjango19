@@ -5,6 +5,7 @@
         <h1>{{ title }} is working</h1>
 
         {% for object in object_list %}
+        
             <a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a>
             <b>content:</b> {{ object.content }}<br/>
             <b>timestamp:</b> {{ object.timestamp }}<br/>
@@ -14,7 +15,7 @@
         Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a><br/><br/>
 
         {% empty %}
-        <p>You Have No Posts</p>
+            <p>You Have No Posts</p>
 
         {% endfor %}
         
