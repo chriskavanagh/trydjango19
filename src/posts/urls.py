@@ -14,6 +14,6 @@ urlpatterns = [
     # update view
     url(r'^(?P<pk>\d+)/update/$', views.post_update, name='update'),
     # delete view
-    url(r'^(?P<pk>\d+)/delete/$', views.post_create, name='delete'),
+    url(r'^(?P<pk>\d+)/delete/$', views.post_delete, name='delete'),
     
 ]

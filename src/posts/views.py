@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from .models import Post
 from .forms import PostForm
@@ -12,14 +13,14 @@ def post_create(request):
     if form.is_valid():
         f = form.save(commit=False)
         f.save()
-        return redirect(reverse('list'))
+        return redirect('list')
     cxt = {'form': form}
     return render(request, 'post_form.html', cxt)
     
     
 def post_detail(request, pk=None):
     obj = get_object_or_404(Post, pk=pk)
-    cxt = {'title': obj.title, 'obj': obj}
+    cxt = {'title': obj.title, 'object': obj}
     return render(request, 'post_detail.html', cxt)
     
     
@@ -41,5 +42,8 @@ def post_update(request, pk=None):
     
     
 def post_delete(request, pk=None):
-    pass
+    obj = get_object_or_404(Post, pk=pk)
+    obj.delete()
+    messages.success(request, 'Successfully Deleted')
+    return redirect('list')
 

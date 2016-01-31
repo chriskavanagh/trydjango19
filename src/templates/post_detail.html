@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <h1>{{ title }} is working</h1>        
+
+            <a href="{% url 'delete' object.pk %}">{{ object.title }}<br/></a>
+            <b>content:</b> {{ object.content }}<br/>
+            <b>timestamp:</b> {{ object.timestamp }}<br/>
+            <b>updated:</b> {{ object.updated }}<br/>
+            <b>Slug:</b> {{ object.slug }}<br/>
+            pk={{ object.pk }}<br/><br/>        
+        
+    </body>
+</html>
