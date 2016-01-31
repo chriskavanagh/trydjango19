@@ -4,6 +4,14 @@
         
         <h1>{{ title }} is working</h1>
 
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         {% for object in object_list %}
 
             <a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a>
