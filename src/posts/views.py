@@ -10,6 +10,7 @@ from .forms import PostForm
 # Create your views here.
 def post_create(request):
     form = PostForm(request.POST or None)
+    print form
     if form.is_valid():
         f = form.save(commit=False)
         f.save()
