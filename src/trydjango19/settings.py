@@ -117,4 +117,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
-#LOGIN_URL = 'login' # reverse_lazy('login')
+LOGIN_URL = 'login' # reverse_lazy('login')
