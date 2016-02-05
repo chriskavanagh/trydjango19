@@ -12,10 +12,25 @@ class UserSignInForm(forms.Form):
     
     
 class RegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)        
+    
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+        
+        def save(self, commit=True):
+            user = super(RegistrationForm, self).save(commit=False)
+            user.email = self.cleaned_data['email']
+            if commit:
+                user.save()
+            return user      
+        
+           
+class UserRegistrationForm(RegistrationForm):
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         
         self.helper = FormHelper()
-        self.helper.layout = Layout('username', 'password1', 'password2',
+        self.helper.layout = Layout('username', 'email', 'password1', 'password2',
                                 ButtonHolder(Submit('register','Register',
                                                 css_class='btn-primary')))
