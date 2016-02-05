@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+
+<h1>Form</h1>
+
+<form action = "" method="POST">
+        {% csrf_token %}
+        <div >
+            <label for="{{ form.username.id_for_label }}"></label>
+            {{ form.username }}
+        </div>
+
+        <div>
+            <label for="{{ form.password.id_for_label }}"></label>
+            {{ form.password }}
+        </div>
+    <input class='btn btn-success' type='submit' value='Login'></input>
+</form>
+
+

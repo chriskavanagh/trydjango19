@@ -14,6 +14,7 @@ def post_create(request):
     if form.is_valid():
         f = form.save(commit=False)
         f.save()
+        messages.success(request, 'Your Post Was Successfully Created')
         return redirect('list')
     cxt = {'form': form}
     return render(request, 'post_form.html', cxt)
@@ -27,8 +28,8 @@ def post_detail(request, pk=None):
     
 def post_list(request):
     queryset = Post.objects.all()
-    cxt = {'object_list': queryset, 'title': 'List'}
-    return render(request, 'index.html', cxt)
+    cxt = {'object_list': queryset, 'title': 'Post List. . .'}
+    return render(request, 'post_list.html', cxt)
     
     
 def post_update(request, pk=None):

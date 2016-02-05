@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block heading %} {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-4'>
+
+    
+        <h1>{{ title }}</h1><br/>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        {% for object in object_list %}
+
+            <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a></h3>
+            <h4><p><b>content:</b> {{ object.content }}</p><h4><br/>
+            <b>timestamp:</b> {{ object.timestamp }}<br/>
+            <b>updated:</b> {{ object.updated }}<br/>
+            pk={{ object.pk }}<br/><br/>
+            slug={{ object.slug }}
+
+            <p>Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a></p><br/><br/>
+
+        {% empty %}
+            <p>You Have No Posts</p>
+
+        {% endfor %}    
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

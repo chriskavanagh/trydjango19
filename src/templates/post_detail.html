@@ -5,7 +5,7 @@
         <h1>{{ title }} is working</h1>        
 
             <a href="{% url 'delete' object.pk %}">{{ object.title }}-(Click To Delete)<br/></a>
-            <b>content:</b> {{ object.content }}<br/>
+            <p><b>content:</b>{{ object.content }}</p><br/>
             <b>timestamp:</b> {{ object.timestamp }}<br/>
             <b>updated:</b> {{ object.updated }}<br/>
             <b>Slug:</b> {{ object.slug }}<br/>
