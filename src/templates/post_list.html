@@ -10,7 +10,7 @@
         <div class='col-sm-4'>
 
     
-        <h1>{{ title }}</h1><br/>
+        <h1 class="blog-title">{{ title }}</h1><br/><br/>
 
         {% if messages %}
             <ul class="messages">
@@ -22,20 +22,21 @@
 
 
         {% for object in object_list %}
-    <div class="container">
-        <div class="row">
-            <div class="well">
-                <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a></h3>
-                <h4><p><b>content:</b> {{ object.content }}</p></h4><br/>
-                <b>timestamp:</b> {{ object.timestamp }}<br/>
-                <b>updated:</b> {{ object.updated }}<br/>
-                pk={{ object.pk }}<br/><br/>
-                slug={{ object.slug }}
+        
+            <div class="container">
+                <div class="row">
+                    <div class="well">
+                        <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a></h3>
+                        <h4><p><b>{{ object.content }}</b></p></h4><br/>
+                        <b>Created:</b> {{ object.timestamp }}<br/>
+                        <b>Updated:</b> {{ object.updated }}<br/>
+                        pk={{ object.pk }}<br/><br/>
+                        slug={{ object.slug }}
 
-                <p>Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a></p><br/><br/>
+                        <p>Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a></p><br/><br/>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
         {% empty %}
 
