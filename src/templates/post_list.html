@@ -8,7 +8,6 @@
 <div class="container">
     <div class="row">
         <div class='col-sm-4'>
-
     
         <h1 class="blog-title">{{ title }}</h1><br/><br/>
 
@@ -21,28 +20,50 @@
         {% endif %}
 
 
-        {% for object in object_list %}
+        {% for post in posts %}
         
             <div class="container">
                 <div class="row">
                     <div class="well">
-                        <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}<br/></a></h3>
-                        <h4><p><b>{{ object.content }}</b></p></h4><br/>
-                        <b>Created:</b> {{ object.timestamp }}<br/>
-                        <b>Updated:</b> {{ object.updated }}<br/>
-                        pk={{ object.pk }}<br/><br/>
-                        slug={{ object.slug }}
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}<br/></a></h3>
+                        <h4><p><b>{{ post.content|linebreaks }}</b></p></h4><br/>
+                        <b>Created:</b> {{ post.timestamp }}<br/>
+                        <b>Updated:</b> {{ post.updated }}<br/><br/>
+                        
+                        <p><a href="{{ post.get_absolute_url }}" class="btn btn-info" role="button">View</a></p>
+                        
 
-                        <p>Update: <a href="{% url 'update' object.pk %}">{{ object.title }}<br/></a></p><br/><br/>
+                        <p><a href="{% url 'update' post.pk %}" class="btn btn-success" role="button">Update</a></p><br/><br/>
                     </div>
+
+            {% empty %}
+
+                <p>You Have No Posts</p>
+
+            {% endfor %}
+
+                </div>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if posts.has_previous %}
+                            <a href="?page={{ posts.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
                 </div>
             </div>
 
-        {% empty %}
-
-            <p>You Have No Posts</p>
+        
             
-        {% endfor %}    
+            
 
         
     </div>

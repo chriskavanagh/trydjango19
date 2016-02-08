@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
@@ -28,7 +29,16 @@ def post_detail(request, pk=None):
     
 def post_list(request):
     queryset = Post.objects.all()
-    cxt = {'object_list': queryset, 'title': 'Post List. . .'}
+    paginator = Paginator(queryset, 2)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+        
+    cxt = {'posts': posts, 'title': 'Post List. . .'}
     return render(request, 'post_list.html', cxt)
     
     

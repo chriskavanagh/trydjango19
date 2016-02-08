@@ -12,11 +12,13 @@
             <h1>{{ title }}</h1>        
 
                 <a href="{% url 'delete' object.pk %}">{{ object.title }}-(Click To Delete)<br/></a>
-                <p><b>content:</b>{{ object.content }}</p><br/>
-                <b>timestamp:</b> {{ object.timestamp }}<br/>
-                <b>updated:</b> {{ object.updated }}<br/>
+                <p><b>{{ object.content|linebreaks }}</b></p><br/>
+                <p>timestamp: {{ object.timestamp }}</p><br/>
+                <p>updated: {{ object.updated }}</p><br/>
                 <b>Slug:</b> {{ object.slug }}<br/>
-                pk={{ object.pk }}<br/><br/> 
+                pk={{ object.pk }}<br/><br/>
+
+                <p><a href="{% url 'delete' object.pk %}" class="btn btn-danger" role="button">Delete</a></p> 
 
                 </div>
         </div>
