@@ -32,12 +32,8 @@
   </head>
 
   <body>
-
-
-{% comment %}
-
-{# code for facebook comments #}
 <!-- facebook comment javascript -->
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -46,10 +42,8 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=933725733335978";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<!-- end facebook comment javascript --> 
 
-{% endcomment %}
-
+<!-- end facebook comment javascript -->  
 
   <!-- messages -->
     {% if messages %}
@@ -151,7 +145,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2016 Home Office, Inc.</p>
+        <p>&copy; 2015 Company, Inc.</p>
       </footer>
     </div> <!-- /container -->
 
@@ -164,8 +158,5 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    {# script for Disqus Comments #}
-    <script id="dsq-count-scr" src="//djangoworld.disqus.com/count.js" async></script>
-    
   </body>
 </html>

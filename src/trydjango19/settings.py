@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'posts',
+    #'disqus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,6 +114,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #django-crispy-forms:
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Disqus Settings:
+#DISQUS_API_KEY = 
+DISQUS_WEBSITE_SHORTNAME = 'djangoworld'
 
 
 SITE_ID = 1
