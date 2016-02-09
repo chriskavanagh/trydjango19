@@ -22,8 +22,8 @@ def post_create(request):
     
     
 def post_detail(request, pk=None):
-    obj = get_object_or_404(Post, pk=pk)
-    cxt = {'title': obj.title, 'object': obj}
+    post = get_object_or_404(Post, pk=pk)
+    cxt = {'title': post.title, 'post': post}
     return render(request, 'post_detail.html', cxt)
     
     
@@ -38,7 +38,7 @@ def post_list(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
         
-    cxt = {'posts': posts, 'title': 'Post List. . .'}
+    cxt = {'posts': posts, 'title': 'Post List. .'}
     return render(request, 'post_list.html', cxt)
     
     
