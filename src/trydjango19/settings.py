@@ -115,7 +115,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #django-crispy-forms:
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# Disqus Settings:
+#Disqus Settings:
 #DISQUS_API_KEY = 
 DISQUS_WEBSITE_SHORTNAME = 'djangoworld'
 
