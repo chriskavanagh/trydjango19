@@ -29,7 +29,7 @@ def post_detail(request, pk=None):
     
 def post_list(request):
     queryset = Post.objects.all()
-    paginator = Paginator(queryset, 2)
+    paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

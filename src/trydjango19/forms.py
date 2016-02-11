@@ -9,8 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 class UserSignInForm(forms.Form):
     """login form for user"""
     username= forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    
+    password = forms.CharField(widget=forms.PasswordInput)    
     
     
  # override UserCreationForm and add email. .   
@@ -27,11 +26,10 @@ class RegistrationForm(UserCreationForm):
             user.email = self.cleaned_data['email']
             if commit:
                 user.save()
-            return user
-            
+            return user            
         
  
-# subclass the RegistrationForm (above), use crispy_forms. . 
+# subclass the RegistrationForm (above), uses crispy_forms. . 
 class UserRegistrationForm(RegistrationForm):
     """crispy_forms tag for RegistrationForm"""
     def __init__(self, *args, **kwargs):
