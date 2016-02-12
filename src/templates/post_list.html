@@ -30,10 +30,10 @@
                         <b>Created:</b> {{ post.timestamp }}<br/>
                         <b>Updated:</b> {{ post.updated }}<br/><br/>
                         
-                        <p><a href="{{ post.get_absolute_url }}" class="btn btn-default" role="button">View</a></p>
+                        <p><a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
                         
 
-                        <p><a href="{% url 'update' post.pk %}" class="btn btn-default" role="button">Update</a></p><br/><br/>
+                        <p><a href="{% url 'update' post.pk %}" class="btn btn-primary" role="button">Update</a></p><br/><br/>
                     </div>
 
             {% empty %}
@@ -46,26 +46,25 @@
 
                 <div class="pagination">
                     <span class="step-links">
-                        {% if posts.has_previous %}
-                            <a href="?page={{ posts.previous_page_number }}">previous</a>
-                        {% endif %}
+                        <nav>
+                            <ul class="pager">
+                                {% if posts.has_previous %}
+                                 <li><a href="?page={{ posts.previous_page_number }}">Previous</a></li>
+                                {% endif %}
 
-                        <span class="current">
-                            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                        </span>
+                                <span class="current">
+                                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                                </span>
 
-                        {% if posts.has_next %}
-                            <a href="?page={{ posts.next_page_number }}">next</a>
-                        {% endif %}
+                                {% if posts.has_next %}
+                                  <li><a href="?page={{ posts.next_page_number }}">Next</a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
                     </span>
                 </div>
-            </div>
-
-        
-            
-            
-
-        
+            </div>           
+       
     </div>
 </div>
 

@@ -36,6 +36,6 @@ class UserRegistrationForm(RegistrationForm):
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
         
         self.helper = FormHelper()
-        self.helper.layout = Layout(Fieldset('Register', 'username', 'email', 'password1', 'password2'),
+        self.helper.layout = Layout(Fieldset('<h2>Register</h2>', 'username', 'email', 'password1', 'password2'),
                                 ButtonHolder(Submit('register','Register',
                                                 css_class='btn-primary')))
