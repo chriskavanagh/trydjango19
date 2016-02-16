@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, login_required
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserSignInForm, UserRegistrationForm
+from .forms import UserSignInForm, CrispyRegistrationForm
 
 
 # ---------views------------#
@@ -54,7 +54,7 @@ def user_logout(request):
     
     
 def sign_up(request):
-    form = UserRegistrationForm(request.POST or None)
+    form = CrispyRegistrationForm(request.POST or None)
     print form
     if form.is_valid():
         f = form.save(commit=False)

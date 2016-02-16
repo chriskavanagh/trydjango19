@@ -30,10 +30,10 @@ class RegistrationForm(UserCreationForm):
         
  
 # subclass the RegistrationForm (above), uses crispy_forms. . 
-class UserRegistrationForm(RegistrationForm):
+class CrispyRegistrationForm(RegistrationForm):
     """crispy_forms tag for RegistrationForm"""
     def __init__(self, *args, **kwargs):
-        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+        super(CrispyRegistrationForm, self).__init__(*args, **kwargs)
         
         self.helper = FormHelper()
         self.helper.layout = Layout(Fieldset('<h2>Register</h2>', 'username', 'email', 'password1', 'password2'),

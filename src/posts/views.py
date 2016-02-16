@@ -5,12 +5,12 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from .models import Post
-from .forms import PostForm
+from .forms import CrispyPostForm
 
 
 # Create your views here.
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = CrispyPostForm(request.POST or None)
     print form
     if form.is_valid():
         f = form.save(commit=False)
