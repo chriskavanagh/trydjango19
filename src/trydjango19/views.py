@@ -30,6 +30,23 @@ def user_login(request):
             message.warning(request, 'Please Provide A Valid Username Or Password')
             
             
+ ## testing purposes only ##           
+def my_login(request):
+    form = UserSignInForm(request.POST or None)
+    print form
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        
+        if user is not None and user.is_active:
+            login(request, user)
+            return redirect('list')
+    cxt = {'form': form}
+    return render(request, 'manual_form.html', cxt)
+## testing purposes only ##
+
+    
 @login_required           
 def user_logout(request):
     logout(request)

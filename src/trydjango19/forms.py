@@ -8,8 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserSignInForm(forms.Form):
     """login form for user"""
-    username= forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)    
+    username= forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))    
     
     
  # override UserCreationForm and add email. .   

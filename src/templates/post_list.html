@@ -5,67 +5,66 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-4'>
-    
-        <h1 class="blog-title">{{ title }}</h1><br/><br/>
-
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-
-        {% for post in posts %}
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-4'>
         
-            <div class="container">
-                <div class="row">
-                    <div class="well">
-                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}<br/></a></h3>
-                        <h4><p><i>{{ post.content|linebreaks }}</i></p></h4><br/>
-                        <b>Created:</b> {{ post.timestamp }}<br/>
-                        <b>Updated:</b> {{ post.updated }}<br/><br/>
-                        
-                        <p><a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
-                        
+            <h1 class="blog-title">{{ title }}</h1><br/><br/>
 
-                        <p><a href="{% url 'update' post.pk %}" class="btn btn-primary" role="button">Update</a></p><br/><br/>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+
+            {% for post in posts %}
+            
+                <div class="container">
+                    <div class="row">
+                        <div class="well">
+                            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}<br/></a></h3>
+                            <h4><p><i>{{ post.content|linebreaks }}</i></p></h4><br/>
+                            <b>Created:</b> {{ post.timestamp }}<br/>
+                            <b>Updated:</b> {{ post.updated }}<br/><br/>
+                            
+                            <p><a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+                            
+
+                            <p><a href="{% url 'update' post.pk %}" class="btn btn-primary" role="button">Update</a></p><br/><br/>
+                        </div>
+
+                {% empty %}
+
+                    <p>You Have No Posts</p>
+
+                {% endfor %}
+
                     </div>
 
-            {% empty %}
+                    <div class="pagination">
+                        <span class="step-links">
+                            <nav>
+                                <ul class="pager">
+                                    {% if posts.has_previous %}
+                                     <li><a href="?page={{ posts.previous_page_number }}">Previous</a></li>
+                                    {% endif %}
 
-                <p>You Have No Posts</p>
+                                    <span class="current">
+                                        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                                    </span>
 
-            {% endfor %}
-
-                </div>
-
-                <div class="pagination">
-                    <span class="step-links">
-                        <nav>
-                            <ul class="pager">
-                                {% if posts.has_previous %}
-                                 <li><a href="?page={{ posts.previous_page_number }}">Previous</a></li>
-                                {% endif %}
-
-                                <span class="current">
-                                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                                </span>
-
-                                {% if posts.has_next %}
-                                  <li><a href="?page={{ posts.next_page_number }}">Next</a></li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </span>
-                </div>
-            </div>           
-       
-    </div>
-</div>
+                                    {% if posts.has_next %}
+                                      <li><a href="?page={{ posts.next_page_number }}">Next</a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </span>
+                    </div>
+                </div>       
+            </div>
+        </div>
 
 {% endblock %}
