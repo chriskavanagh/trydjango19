@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/update/$', views.post_update, name='update'),
     # delete view
     url(r'^(?P<pk>\d+)/delete/$', views.post_delete, name='delete'),
+    # order food_form.html
+    url(r'^order/$', views.food_form, name='order'),
     
 ]

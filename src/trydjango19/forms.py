@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from django import forms
 from crispy_forms.helper import FormHelper
+from crispy_forms.bootstrap import FormActions  # for bootstrap 3 (replaces Buttonholder)
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -37,5 +38,5 @@ class CrispyRegistrationForm(RegistrationForm):
         
         self.helper = FormHelper()
         self.helper.layout = Layout(Fieldset('<h2>Register</h2>', 'username', 'email', 'password1', 'password2'),
-                                ButtonHolder(Submit('register','Register',
+                                FormActions(Submit('register','Register',
                                                 css_class='btn-primary')))
