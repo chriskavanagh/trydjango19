@@ -34,14 +34,26 @@ free_food_choices = (
     ('sushi', 'Sushi')
 )
 
+order_type = (
+    ('pickup', 'PickUp'),
+    ('delivery', 'Delivery')
+)
+
  
 class FoodForm(forms.Form):
     name = forms.CharField(label='Your name')
-    adress = forms.CharField(required=False)
+    address = forms.CharField(required=False)
+    type = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=order_type, help_text='Select one.')
+                                                                            
     email = forms.EmailField(help_text='A valid email address, please.')
     phone = forms.IntegerField(help_text='Ex: 5409897947')
     comment = forms.CharField(widget=forms.Textarea, max_length=100, help_text='100 characters max.')
-    coupon = forms.MultipleChoiceField(required=False, widget=forms.CheckboxSelectMultiple, choices=free_food_choices)
+    coupon = forms.MultipleChoiceField(required=False,
+                                        widget=forms.CheckboxSelectMultiple, 
+                                        choices=free_food_choices,
+                                        help_text='Donuts-$15 or more, Crab Rangoon-$20 or more, Sushi Roll-$30 or more.')
+    
+                                 
     
                                 
 
